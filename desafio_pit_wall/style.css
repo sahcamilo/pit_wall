@@ -1,0 +1,423 @@
+
+/* =====================================
+   DESAFIO PITWALL
+   ===================================== */
+
+
+/* 1. CORES E CONFIGURAÇÕES */
+
+:root {
+    --black: #0b0b0f;
+    --panel: #16161d;
+    --red: #e10600;
+    --white: #f5f5f7;
+    --muted: #888895;
+    --line: #292932;
+
+    --ferrari: #e10600;
+    --mclaren: #ff8700;
+    --mercedes: #00d2be;
+    --audi: #aaaab5;
+
+    --font: 'Titillium Web', 'Segoe UI', sans-serif;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--black);
+    color: var(--white);
+}
+
+
+/* 2. CABEÇALHO */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    padding: 20px;
+}
+
+.logo {
+    font-weight: 900;
+    font-style: italic;
+}
+
+.logo span {
+    color: var(--red);
+}
+
+.estatisticas {
+    display: flex;
+    gap: 32px;
+}
+
+.estatisticas {
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color .2s;
+}
+
+.estatisticas {
+    color: var(--white);
+}
+
+
+/* 3. BOTÕES */
+
+.btn-comprar,
+.btn-principal,
+.btn-reservar {
+    background: var(--red);
+    color: var(--white);
+    padding: 12px;
+    font-weight: 900;
+}
+
+.btn-comprar:hover,
+.btn-principal:hover,
+.btn-reservar:hover {
+    background: #b80500;
+}
+
+.btn-secundario {
+    color: var(--white);
+    border: 1px solid var(--white);
+    padding: 12px;
+}
+
+
+/* 4. BANNER PRINCIPAL */
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    background:
+        linear-gradient(110deg,
+            var(--black) 0%,
+            var(--black) 62%,
+            var(--red) 62%,
+            var(--red) 64%,
+            rgba(11,11,15,.35) 64%),
+        url("img/piloto.jpg") right center / cover no-repeat;
+    padding: 40px;
+}
+
+.banner-texto {
+    width: 60%;
+}
+
+.banner h1 {
+    font-size: 5.5rem;
+    font-style: italic;
+    font-weight: 900;
+}
+
+.banner h1 span {
+    display: block;
+    color: var(--red);
+}
+
+.subtitulo {
+    color: var(--red);
+    font-weight: 900;
+}
+
+.banner-texto p {
+    color: var(--muted);
+}
+
+.botoes {
+    display: flex;
+    gap: 12px;
+}
+
+.banner-imagem {
+    width: 40%;
+}
+
+.banner-imagem img {
+    width: 100%;
+}
+
+.estatisticas {
+    display: flex;
+    gap: 20px;
+}
+
+.estatisticas div {
+    border-left: 1px solid var(--line);
+    padding: 10px;
+}
+
+.estatisticas strong {
+    font-size: 2rem;
+    font-style: italic;
+}
+
+.estatisticas p {
+    color: var(--muted);
+}
+
+
+/* 5. TÍTULOS DAS SEÇÕES */
+
+.secao {
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 900;
+}
+
+h2 span {
+    color: var(--red);
+}
+
+
+/* 6. GRID DE PILOTOS */
+
+.grid-pilotos {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.piloto {
+    background: var(--panel);
+    border-top: 5px solid var(--team);
+    padding: 15px;
+}
+
+.piloto:nth-child(1) {
+    --team: var(--ferrari);
+}
+
+.piloto:nth-child(2) {
+    --team: var(--mclaren);
+}
+
+.piloto:nth-child(3) {
+    --team: var(--mercedes);
+}
+
+.piloto:nth-child(4) {
+    --team: var(--audi);
+}
+
+.numero {
+    font-size: 5rem;
+    opacity: .35;
+}
+
+.piloto:hover {
+    transform: translateY(-6px);
+}
+
+
+/* 7. FILTROS DA CLASSIFICAÇÃO */
+
+.filtros {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filtros div {
+    flex: 1;
+    min-width: 180px;
+}
+
+.filtros label {
+    font-size: .82rem;
+    color: var(--muted);
+}
+
+input,
+select,
+textarea {
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--line);
+    padding: 10px;
+}
+
+.filtros button {
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--white);
+    padding: 10px;
+}
+
+
+/* 8. TABELA */
+
+.tabela-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel);
+}
+
+th {
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+td {
+    padding: 12px;
+}
+
+tbody tr:hover {
+    background: #1e1e28;
+}
+
+tbody tr:first-child {
+    background: rgba(225,6,0,.12);
+}
+
+
+/* 9. INGRESSOS */
+
+.ingressos-container {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 20px;
+}
+
+.precos p {
+    color: var(--muted);
+}
+
+.aviso {
+    background: var(--panel);
+    border-left: 4px solid var(--red);
+    padding: 12px;
+    color: var(--white);
+}
+
+.preco {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid var(--line);
+}
+
+.preco strong {
+    color: var(--red);
+}
+
+
+/* 10. FORMULÁRIO */
+
+.formulario {
+    background: var(--panel);
+    padding: 20px;
+    border-top: 4px solid var(--red);
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo label {
+    color: var(--muted);
+    font-size: .82rem;
+}
+
+.campo-completo {
+    grid-column: 1 / -1;
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.campo textarea {
+    width: 100%;
+}
+
+.btn-reservar {
+    grid-column: 1 / -1;
+}
+
+
+/* 11. RODAPÉ */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+}
+
+footer span {
+    color: var(--red);
+}
+
+
+/* 12. RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+
+    nav {
+        display: none;
+    }
+
+    .banner {
+        flex-direction: column;
+        background: var(--black);
+    }
+
+    .banner h1 {
+        font-size: 3.2rem;
+    }
+
+    .banner-texto {
+        width: 100%;
+    }
+
+    .banner-imagem {
+        width: 100%;
+    }
+
+    .grid-pilotos {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .filtros {
+        flex-direction: column;
+    }
+
+    table {
+        min-width: 620px;
+    }
+
+    td {
+        white-space: nowrap;
+    }
+
+    .ingressos-container {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario {
+        grid-template-columns: 1fr;
+    }
+
+}
