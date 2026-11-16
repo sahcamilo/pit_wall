@@ -1,0 +1,462 @@
+
+/* =====================================
+   DESAFIO PITWALL
+   ===================================== */
+
+
+/* 1. CORES E CONFIGURAÇÕES */
+
+:root {
+    --black: #0b0b0f;
+    --panel: #16161d;
+    --red: #e10600;
+    --white: #f5f5f7;
+    --muted: #888895;
+    --line: #292932;
+
+    --ferrari: #e10600;
+    --mclaren: #ff8700;
+    --mercedes: #00d2be;
+    --audi: #aaaab5;
+
+    --font: 'Titillium Web', 'Segoe UI', sans-serif;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--black);
+    color: var(--white);
+}
+
+
+/* ==========================================================================
+   TOPBAR
+   ========================================================================== */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 4rem;
+  background-color: var(--bg-dark);
+  border-bottom: 1px solid var(--border-color);
+}
+
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 900;
+  font-style: italic;
+}
+.logo span { color: var(--red-f1); }
+
+
+.topbar a:not(.btn-primary) {
+  color: var(--text-gray);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  margin: 0 1rem;
+}
+
+
+.btn-primary {
+  background-color: var(--red-f1);
+  color: #fff;
+  padding: 0.6rem 1.4rem;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+
+/* ==========================================================================
+   HERO / CABEÇALHO DIAGONAL COM SUA IMAGEM
+   ========================================================================== */
+.hero-container {
+  position: relative;
+  display: flex;
+  min-height: 480px;
+  background-color: var(--bg-dark);
+  overflow: hidden;
+  padding: 4rem;
+  align-items: center;
+}
+
+
+.titulo {
+  max-width: 480px;
+  z-index: 2;
+}
+
+
+.titulo p:first-child {
+  color: var(--red-f1);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+
+.titulo h1 {
+  font-size: 4.2rem;
+  font-weight: 900;
+  font-style: italic;
+  line-height: 0.92;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+
+.titulo h1 span { color: var(--red-f1); }
+
+
+.titulo p:nth-of-type(2) {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+
+.hero-botoes {
+  display: flex;
+  gap: 1rem;
+}
+
+
+.btn-red {
+  background-color: var(--red-f1);
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+
+.btn-outline {
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+
+/* Corte Angular da Imagem + Listra Vermelha */
+.hero-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 58%;
+  height: 100%;
+  background-color: var(--red-f1);
+  clip-path: polygon(22% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 1;
+}
+
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  clip-path: polygon(calc(22% + 14px) 0, 100% 0, 100% 100%, 14px 100%);
+  filter: brightness(0.75);
+}
+
+
+.stats-overlay {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 4rem;
+  display: flex;
+  gap: 3rem;
+  z-index: 3;
+}
+
+
+.stats-overlay p {
+  text-align: center;
+  font-size: 0.7rem;
+  color: #d1d5db;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+
+.stats-overlay p strong {
+  display: block;
+  font-size: 2.6rem;
+  font-weight: 900;
+  font-style: italic;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+
+/* ZEBRA DA PISTA */
+.kerb, .zebra-strip {
+    height: 12px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--red) 0px,
+        var(--red) 40px,
+        var(--white) 40px,
+        var(--white) 80px
+    );
+}
+
+/* 6. GRID DE PILOTOS */
+
+.grid-pilotos {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.piloto {
+    background: var(--panel);
+    border-top: 5px solid var(--team);
+    padding: 15px;
+}
+
+.piloto:nth-child(1) {
+    --team: var(--ferrari);
+}
+
+.piloto:nth-child(2) {
+    --team: var(--mclaren);
+}
+
+.piloto:nth-child(3) {
+    --team: var(--mercedes);
+}
+
+.piloto:nth-child(4) {
+    --team: var(--audi);
+}
+
+.numero {
+    font-size: 5rem;
+    opacity: .35;
+}
+
+.piloto:hover {
+    transform: translateY(-6px);
+}
+
+
+/* 7. FILTROS DA CLASSIFICAÇÃO */
+
+.filtros {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filtros div {
+    flex: 1;
+    min-width: 180px;
+}
+
+.filtros label {
+    font-size: .82rem;
+    color: var(--muted);
+}
+
+input,
+select,
+textarea {
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--line);
+    padding: 10px;
+}
+
+.filtros button {
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--white);
+    padding: 10px;
+}
+
+
+/* 8. TABELA */
+
+.tabela-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel);
+}
+
+th {
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+td {
+    padding: 12px;
+}
+
+tbody tr:hover {
+    background: #1e1e28;
+}
+
+tbody tr:first-child {
+    background: rgba(225,6,0,.12);
+}
+
+
+/* 9. INGRESSOS */
+
+.ingressos-container {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 20px;
+}
+
+.precos p {
+    color: var(--muted);
+}
+
+.aviso {
+    background: var(--panel);
+    border-left: 4px solid var(--red);
+    padding: 12px;
+    color: var(--white);
+}
+
+.preco {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid var(--line);
+}
+
+.preco strong {
+    color: var(--red);
+}
+
+
+/* 10. FORMULÁRIO */
+
+.formulario {
+    background: var(--panel);
+    padding: 20px;
+    border-top: 4px solid var(--red);
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo label {
+    color: var(--muted);
+    font-size: .82rem;
+}
+
+.campo-completo {
+    grid-column: 1 / -1;
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.campo textarea {
+    width: 100%;
+}
+
+.btn-reservar {
+    grid-column: 1 / -1;
+}
+
+
+/* 11. RODAPÉ */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+}
+
+footer span {
+    color: var(--red);
+}
+
+
+/* 12. RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+
+    nav {
+        display: none;
+    }
+
+    .banner {
+        flex-direction: column;
+        background: var(--black);
+    }
+
+    .banner h1 {
+        font-size: 3.2rem;
+    }
+
+    .banner-texto {
+        width: 100%;
+    }
+
+    .banner-imagem {
+        width: 100%;
+    }
+
+    .grid-pilotos {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .filtros {
+        flex-direction: column;
+    }
+
+    table {
+        min-width: 620px;
+    }
+
+    td {
+        white-space: nowrap;
+    }
+
+    .ingressos-container {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario {
+        grid-template-columns: 1fr;
+    }
+
+}
